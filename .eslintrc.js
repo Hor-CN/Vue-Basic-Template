@@ -4,7 +4,7 @@ module.exports = {
   env: {
     browser: true,
     node: true,
-    es2021: true,
+    es6: true,
   },
   parser: 'vue-eslint-parser',
   extends: [
@@ -12,6 +12,7 @@ module.exports = {
     'plugin:vue/vue3-recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
+    './.eslintrc-auto-import.json',
     // eslint-config-prettier 的缩写
     'prettier',
   ],
