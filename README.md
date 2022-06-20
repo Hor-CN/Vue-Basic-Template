@@ -1,6 +1,6 @@
 <p align="center">
   <a href="#">
-    <img alt="Vue Naive Admin Logo" width="180" src="./static-files/imgs/vite.svg">
+    <img alt="Vite Logo" width="180" src="./static-files/imgs/vite.svg">
   </a>
 </p>
 
@@ -13,7 +13,7 @@
 - 开发工具： Vscode 前端人必备写码神器 + Volar
 - 浏览器： Edge 非常友好的浏览器( Chrome 内核， Win11 自带，好用) + Vue.js devtools 浏览器调试插件
 - 技术栈：Vue3 + Vite + TypeScript + Less + Unocss + Mock + Vue Router + axios + Pinia
-- 规范化：Eslint + Prettier + Airbnb JavaScript Style + husky + lint-staged
+- 规范化：Eslint + Prettier + husky + lint-staged
 - 包管理：Yarn
 
 ### 特点
