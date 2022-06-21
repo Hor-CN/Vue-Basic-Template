@@ -88,3 +88,95 @@
     ...
 }
 ```
+
+## 🧩Vite 插件模块化
+
+为了方便管理插件，将所有的`config`统一放入`config/vite/plugins`里面，未来还会有更多插件直接分文件夹管理十分干净。值得一提的是，`Fast-Vue3`增加了统一环境变量管理，来区分动态开启某些插件。
+
+```typescript
+// vite/plugins/index.ts
+/**
+ * @name createVitePlugins
+ * @Param isBuild
+ * @description 封装plugins数组统一调用
+ */
+import { PluginOption } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import vueJsx from '@vitejs/plugin-vue-jsx'
+import { AutoImportDeps } from './autoImport'
+import { ConfigPagesPlugin } from './pages'
+import { UnocssPlugin } from './unocss'
+
+export function createVitePlugins(isBuild: boolean) {
+  const vitePlugins: (PluginOption | PluginOption[])[] = [
+    // vue 支持
+    vue(),
+    // JSX 支持
+    vueJsx(),
+  ]
+  // 自动按需引入依赖
+  vitePlugins.push(AutoImportDeps())
+  // 自动生成路由
+  vitePlugins.push(ConfigPagesPlugin())
+  // 原子化Css UnoCss
+  vitePlugins.push(UnocssPlugin())
+  // 开启.gz压缩  rollup-plugin-gzip
+  vitePlugins.push(ConfigCompressPlugin())
+  return vitePlugins
+}
+```
+
+而`vite.config.ts`便干净多了
+
+```typescript
+import { createVitePlugins } from './config/vite/plugins'
+...
+return {
+    resolve: {
+      alias: [
+        // /@/xxxx => src/xxxx
+        {
+          find: /\/@\//,
+          replacement: pathResolve('src') + '/',
+        },
+        // /#/xxxx => types/xxxx
+        {
+          find: /\/#\//,
+          replacement: pathResolve('types') + '/',
+        },
+      ],
+    },
+    // plugins
+    plugins: createVitePlugins(isBuild)
+}
+...
+```
+
+## 📱 支持`Pinia` ,下一代`Vuex5`
+
+创建文件`src/store/index.ts`
+
+```typescript
+// 支持模块化，配合plop可以通过命令行一键生成
+import { createPinia } from 'pinia'
+import { useAppStore } from './modules/app'
+const pinia = createPinia()
+export { useAppStore }
+export default pinia
+```
+
+创建文件`src/store/modules/user/index.ts`
+
+```typescript
+import { defineStore } from 'pinia'
+import piniaStore from '@/store'
+export const useUserStore = defineStore(
+  // 唯一ID
+  'user',
+  {
+    state: () => ({}),
+    getters: {},
+    actions: {},
+  }
+)
+```
