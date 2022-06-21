@@ -10,7 +10,7 @@
     <img src="https://img.shields.io/badge/-TypeScript-blue?logo=typescript&logoColor=white" />
     <img src="https://img.shields.io/badge/-Pinia-yellow?logo=picpay&logoColor=white" />
     <img src="https://img.shields.io/badge/-ESLint-4b32c3?logo=eslint&logoColor=white" />
-    <img src="https://img.shields.io/badge/-pnpm-F69220?logo=pnpm&logoColor=white" />
+    <img src="https://img.shields.io/badge/-yarn-F69220?logo=yarn&logoColor=white" />
     <img src="https://img.shields.io/badge/-Axios-008fc7?logo=axios.js&logoColor=white" />
     <img src="https://img.shields.io/badge/-Prettier-ef9421?logo=Prettier&logoColor=white" alt="Prettier" />
     <img src="https://img.shields.io/badge/-Less-1D365D?logo=less&logoColor=white" alt="Less" />
@@ -180,3 +180,7 @@ export const useUserStore = defineStore(
   }
 )
 ```
+
+## 🤖 支持 Plop 自动生成文件
+
+⚙️ 代码文件自动生成，提供三种预设模板 pages,components,store，也可以根据自己需要设计更多自动生成脚本。一般后端同学惯用此形式，十分高效。
