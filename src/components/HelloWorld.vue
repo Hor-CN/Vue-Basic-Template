@@ -1,4 +1,16 @@
 <script setup lang="ts">
+import { useWebNotification } from '@vueuse/core'
+import type { UseWebNotificationOptions } from '@vueuse/core'
+
+const options: UseWebNotificationOptions = {
+  title: 'Hello, world from VueUse!',
+  dir: 'auto',
+  lang: 'en',
+  renotify: true,
+  tag: 'test',
+}
+const { isSupported, show } = useWebNotification(options)
+
 defineProps<{ msg: string }>()
 
 const count = ref(0)
@@ -14,7 +26,12 @@ const count = ref(0)
   >
     Click me
   </button>
-  <div class="mx-auto i-ic-baseline-add-circle text-3xl bg-green-500" />
+  <div class="i-ic-baseline-add-circle text-3xl bg-green-500" />
+
+  <div v-if="isSupported">
+    <button @click="show()">通知</button>
+  </div>
+  <div v-else>您的浏览器不支持通知Web API。</div>
 </template>
 
 <style scoped>
