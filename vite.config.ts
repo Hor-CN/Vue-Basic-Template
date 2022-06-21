@@ -1,62 +1,35 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import vueJsx from '@vitejs/plugin-vue-jsx'
-import Unocss from 'unocss/vite'
-import AutoImport from 'unplugin-auto-import/vite'
-import Components from 'unplugin-vue-components/vite'
-import Pages from 'vite-plugin-pages'
-import { presetUno, presetAttributify, presetIcons } from 'unocss'
+import { UserConfig, ConfigEnv } from 'vite'
+import { createVitePlugins } from './config/vite/plugins'
 import path from 'path'
-
 function pathResolve(dir: string) {
   return path.resolve(process.cwd(), '.', dir)
 }
 // https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [
-    vue(),
-    vueJsx(),
-    Unocss({
-      presets: [
-        // 默认预设 现在它等效于@unocss/preset-wind : Tailwind / Windi CSS compact preset
-        presetUno(),
-        // 属性化模式支持
-        presetAttributify(),
-        // icon支持
-        presetIcons(),
-      ],
-    }),
-    // 自动导入
-    AutoImport({
-      imports: ['vue'],
-      dts: 'types/auto-import.d.ts',
-      eslintrc: {
-        enabled: true,
-      },
-    }),
-    Pages({
-      dirs: 'src/views',
-    }),
-  ],
-  css: {
-    preprocessorOptions: {
-      less: {
-        javascriptEnabled: true,
+export default ({ command, mode }: ConfigEnv): UserConfig => {
+  const isBuild = command === 'build'
+  console.log(command, mode)
+  return {
+    plugins: createVitePlugins(isBuild),
+    css: {
+      preprocessorOptions: {
+        less: {
+          javascriptEnabled: true,
+        },
       },
     },
-  },
-  resolve: {
-    alias: [
-      // /@/xxxx => src/xxxx
-      {
-        find: /\/@\//,
-        replacement: pathResolve('src') + '/',
-      },
-      // /#/xxxx => types/xxxx
-      {
-        find: /\/#\//,
-        replacement: pathResolve('types') + '/',
-      },
-    ],
-  },
-})
+    resolve: {
+      alias: [
+        // /@/xxxx => src/xxxx
+        {
+          find: /\/@\//,
+          replacement: pathResolve('src') + '/',
+        },
+        // /#/xxxx => types/xxxx
+        {
+          find: /\/#\//,
+          replacement: pathResolve('types') + '/',
+        },
+      ],
+    },
+  }
+}
