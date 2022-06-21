@@ -7,6 +7,9 @@ import Pages from 'vite-plugin-pages'
 import { presetUno, presetAttributify, presetIcons } from 'unocss'
 import path from 'path'
 
+function pathResolve(dir: string) {
+  return path.resolve(process.cwd(), '.', dir)
+}
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -41,9 +44,17 @@ export default defineConfig({
     },
   },
   resolve: {
-    alias: {
-      '/@/': path.resolve(__dirname, 'src'),
-      '/#/': path.resolve(__dirname, 'types'),
-    },
+    alias: [
+      // /@/xxxx => src/xxxx
+      {
+        find: /\/@\//,
+        replacement: pathResolve('src') + '/',
+      },
+      // /#/xxxx => types/xxxx
+      {
+        find: /\/#\//,
+        replacement: pathResolve('types') + '/',
+      },
+    ],
   },
 })
