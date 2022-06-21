@@ -27,5 +27,8 @@ export function createVitePlugins(isBuild: boolean) {
   // 原子化Css UnoCss
   vitePlugins.push(UnocssPlugin())
 
+  // 开启.gz压缩  rollup-plugin-gzip
+  vitePlugins.push(ConfigCompressPlugin())
+
   return vitePlugins
 }
