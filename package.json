@@ -35,7 +35,8 @@
     ]
   },
   "dependencies": {
-    "vue": "^3.2.25"
+    "vue": "^3.2.25",
+    "vue-router": "4"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.0.2",
@@ -62,6 +63,7 @@
     "unplugin-auto-import": "^0.8.8",
     "unplugin-vue-components": "^0.19.6",
     "vite": "^2.9.9",
+    "vite-plugin-pages": "^0.24.2",
     "vue-tsc": "^0.34.7"
   }
 }

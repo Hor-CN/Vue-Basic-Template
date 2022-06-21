@@ -3,6 +3,7 @@ import vue from '@vitejs/plugin-vue'
 import Unocss from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
+import Pages from 'vite-plugin-pages'
 import { presetUno, presetAttributify, presetIcons } from 'unocss'
 import path from 'path'
 
@@ -27,6 +28,9 @@ export default defineConfig({
       eslintrc: {
         enabled: true,
       },
+    }),
+    Pages({
+      dirs: 'src/views',
     }),
   ],
   css: {
