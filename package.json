@@ -35,6 +35,7 @@
     ]
   },
   "dependencies": {
+    "nprogress": "^0.2.0",
     "pinia": "^2.0.14",
     "vue": "^3.2.25",
     "vue-router": "4"
@@ -44,6 +45,7 @@
     "@commitlint/config-conventional": "^17.0.2",
     "@iconify/json": "^2.1.64",
     "@types/node": "^18.0.0",
+    "@types/nprogress": "^0.2.0",
     "@typescript-eslint/eslint-plugin": "^5.28.0",
     "@typescript-eslint/parser": "^5.28.0",
     "@vitejs/plugin-vue": "^2.3.3",
