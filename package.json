@@ -3,9 +3,11 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --mode development",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
+    "build:dev": "vite build --mode development",
+    "build:pro": "vite build --mode production",
     "lint": "eslint src --fix --ext .ts,.tsx,.vue,.js,.jsx",
     "prettier": "prettier --write .",
     "prepare": "husky install",
@@ -37,6 +39,7 @@
   },
   "dependencies": {
     "@vueuse/core": "^8.7.4",
+    "axios": "^0.27.2",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.14",
     "vue": "^3.2.25",

@@ -9,6 +9,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import { AutoImportDeps } from './autoImport'
 import { ConfigPagesPlugin } from './pages'
 import { UnocssPlugin } from './unocss'
+import { ConfigCompressPlugin } from './compress'
 
 export function createVitePlugins(isBuild: boolean) {
   const vitePlugins: (PluginOption | PluginOption[])[] = [

@@ -91,7 +91,7 @@
 
 ## 🧩Vite 插件模块化
 
-为了方便管理插件，将所有的`config`统一放入`config/vite/plugins`里面，未来还会有更多插件直接分文件夹管理十分干净。值得一提的是，`Fast-Vue3`增加了统一环境变量管理，来区分动态开启某些插件。
+为了方便管理插件，将所有的`config`统一放入`config/vite/plugins`里面，未来还会有更多插件直接分文件夹管理十分干净。值得一提的是，增加了统一环境变量管理，来区分动态开启某些插件。
 
 ```typescript
 // vite/plugins/index.ts
