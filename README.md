@@ -1,6 +1,6 @@
 <p align="center">
   <a href="#">
-    <img alt="Vite Logo" width="180" src="./static-files/imgs/vite.svg">
+    <img style="border-radius: 10px" alt="Vite Logo" width="420" src="./static-files/imgs/img.png">
   </a>
 </p>
 
